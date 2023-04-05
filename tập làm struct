@@ -1,0 +1,22 @@
+string convertToString(SCP obj) {
+    // Student answer
+    string madinhdanh;
+    char a[10];
+    sprintf(a, "%d\n", obj.id);
+    madinhdanh=string(a);
+    if ((obj.id<100)&& (obj.id>9))
+    madinhdanh="0"+madinhdanh;
+    else if ((obj.id>=0) && (obj.id<=9))
+    madinhdanh="00"+madinhdanh;
+    madinhdanh="Item #: SCP-"+madinhdanh;
+    
+    string objectclass="Object Class: ";
+    if (obj.objClass==0 ) objectclass=objectclass + "Safe\n";
+    else if (obj.objClass==1) objectclass=objectclass + "Euclid\n";
+    else if (obj.objClass==2) objectclass=objectclass + "Keter\n";
+    
+    string ketqua=madinhdanh+objectclass+"Special Containment Procedures: "+ obj.speConProcedures+"\n"+"Description: "+obj.description+"\n";
+    for (int i=0; i<obj.numAddendums; i++)
+    ketqua=ketqua+ obj.addendums[i]+"\n";
+    return ketqua;
+}
